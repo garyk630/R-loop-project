@@ -35,7 +35,21 @@ boxplot(dnarnaclean$log ~ dnarnaclean$Intron.containing.gene., main = "R-loop di
 fivenum(dnarnaclean$log[dnarnaclean$Intron.containing.gene. =="no"])
 fivenum(dnarnaclean$log[dnarnaclean$Intron.containing.gene. =="yes"])
 
-## Interaction between two explanatory variables and response variable
+## Create GLM model with interaction
+GLMmodel <- lm(log ~ Intron.containing.gene. * logT, data=dnarnaclean)
+summary(GLMmodel)
+
+## Check assumptions
+# Check linearity
+plot(dnarnaclean$logT, dnarnaclean$log, main="R-loop formation by transcription frequency (log)", xlab = "Transcription frequency (log)", ylab = "R-loop formation")
+# Check normality
+qqnorm(GLMmodel$residuals, main = "Model residuals", xlab = "Residuals")
+qqline(GLMmodel$residuals, col="red")
+# Check equal variance
+plot(GLMmodel$fitted.values, GLMmodel$residuals, main="Residual plot", xlab = "Fitted values", ylab = "Residuals")
+abline (h=0, col='red')
+
+## Visualize interaction between two explanatory variables and response variable
 intronyes <- dnarnaclean[dnarnaclean$Intron.containing.gene. == "yes",]
 intronno <- dnarnaclean[dnarnaclean$Intron.containing.gene. == "no",]
 plot(intronyes$logT, intronyes$log, pch=17, col='red', cex=0.8, main = "R-loop by transcription frequency and intron status", xlab = "Transcription frequency (log)", ylab = "R-loop formation (log)")
