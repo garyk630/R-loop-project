@@ -4,6 +4,9 @@ The project is from my biostatistic class. The goal is to use statistic analysis
 # Objective:
 Transcription is an important process for producing RNA from DNA and also a source of genomic instability and DNA damage. DNA and RNA hybrid structure is one of the major reasons for it. In yeast, only 283 out of 6000 genes contain introns. The function of introns was not clear until 2017. Bonnect et al. have published a study in Molecular Cell journal indicating a novel function of introns in decreasing R-loop and preventing genomic instability. Here I am eager to confirm their conclusion and predict that high transcription rate and intron-containing genes have critical effects on R-loop formation. 
 
+# Data collection summary
+My samples are from a published paper in Molecular Cell journal (Supplemental table S1 in the following source information) and the subjects are different yeast genes. The final sample size is 311 genes after I removed 5464 yeast genes without response variables, 98 outliers, and 35 genes without transcription frequency (not determined, n.d.) from the original dataset (5908 genes) (I will talk about the removal of 98 outliers and 35 genes without transcription frequency in next section). Removing genes without response variables helps my analysis focus on potential genes in R-loop formation.
+
 # Research questions:
 * Q1: Is there an effect of gene transcription rate on R-loop formation?
 * Q2: Do intron-containing genes have less R-loop formation?
